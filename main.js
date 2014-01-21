@@ -1,20 +1,45 @@
-var app = angular.module('twitterApp', []);
+var app = angular.module('superApp', []);
 
-app.controller('AppCtrl', function($scope) {
-    $scope.loadMoreTweets = function () {
-        alert('Loading tweets');
-    };
+app.directive('superhero', function () {
+    return {
+        restrict: 'E',
+        scope: {},
+        controller: function ($scope) {
+            $scope.abilities = [];
 
-    $scope.deleteTweets = function () {
-        alert('deleting tweets');
+            this.addStrength = function () {
+                $scope.abilities.push("strength");
+            };
+
+            this.addSpeed = function () {
+                $scope.abilities.push("speed");
+            };
+        },
+
+        link: function (scope, element, attrs) {
+            element.addClass('btn-primary');
+
+            element.bind('mouseenter', function () {
+                console.log(scope.abilities);
+            });
+        }
     };
 });
 
-app.directive('enter', function () {
-    return function (scope, element, attrs) {
-        element.bind('mouseenter', function () {
-            console.log('mert');
-            scope.$apply(attrs.enter);
-        });
+app.directive('strength', function () {
+    return {
+        require: 'superhero',
+        link: function (scope, element, attrs, superheroCtrl) {
+            superheroCtrl.addStrength();
+        }
+    };
+});
+
+app.directive('speed', function () {
+    return {
+        require: 'superhero',
+        link: function (scope, element, attrs, superheroCtrl) {
+            superheroCtrl.addSpeed();
+        }
     };
 });
