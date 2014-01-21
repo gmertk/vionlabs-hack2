@@ -1,23 +1,10 @@
-var myApp = angular.module('myApp', []);
-myApp.factory('Avengers', function() {
-    var Avengers = {};
-    Avengers.cast = [
-        {
-            name: "Mert Karadogan",
-            character: "Maven"
-        },
-        {
-            name: "Orcun Doganci",
-            character: "Iron Man"
-        },
-        {
-            name: "Yigit Karadogan",
-            character: "Agent"
-        }
-    ];
-    return Avengers;
-});
+var app = angular.module('superhero', []);
 
-function AvengersCtrl($scope, Avengers) {
-    $scope.avengers = Avengers;
-}
+app.directive('superman', function () {
+    return {
+        restrict: "M",
+        link: function () {
+            alert("I am working");
+        }
+    };
+});
