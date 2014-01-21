@@ -1,45 +1,11 @@
 var app = angular.module('superApp', []);
-
-app.directive('superhero', function () {
+app.controller('AppCtrl', function () {
+    
+});
+app.directive('panel', function () {
     return {
         restrict: 'E',
-        scope: {},
-        controller: function ($scope) {
-            $scope.abilities = [];
-
-            this.addStrength = function () {
-                $scope.abilities.push("strength");
-            };
-
-            this.addSpeed = function () {
-                $scope.abilities.push("speed");
-            };
-        },
-
-        link: function (scope, element, attrs) {
-            element.addClass('btn-primary');
-
-            element.bind('mouseenter', function () {
-                console.log(scope.abilities);
-            });
-        }
-    };
-});
-
-app.directive('strength', function () {
-    return {
-        require: 'superhero',
-        link: function (scope, element, attrs, superheroCtrl) {
-            superheroCtrl.addStrength();
-        }
-    };
-});
-
-app.directive('speed', function () {
-    return {
-        require: 'superhero',
-        link: function (scope, element, attrs, superheroCtrl) {
-            superheroCtrl.addSpeed();
-        }
+        transclude: true,
+        template: '<div class="jumbotron" ng-transclude>Keep me</div>'
     };
 });
