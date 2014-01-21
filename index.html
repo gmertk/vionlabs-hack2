@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
-    <script src="main.js" type="text/javascript"></script>
+    <script type="text/javascript" src="main.js"></script>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 
 </head>
@@ -19,7 +19,7 @@
 
 <div ng-controller="FirstCtrl">    
     <input type="text" ng-model="data.message">
-    <h1>{{data.message + " world!"}}</h1>
+    <h1>{{data.message}}</h1>
 </div>
 
 
@@ -27,7 +27,7 @@
 
 <div ng-controller="SecondCtrl">    
     <input type="text" ng-model="data.message">
-    <h1>{{reverseMessage(data.message) + " world!"}}</h1>
+    <h1>{{data.message|reverse}}</h1>
 </div>
 
 </div>
