@@ -8,10 +8,11 @@
 </head>
 <body>
 
-<div ng-app="behaviorApp">
+<div ng-app="twitterApp">
 
-    <div enter="jumbotron" leave>I'm content!</div>
-    
+    <div ng-controller="AppCtrl">
+        <div enter="loadMoreTweets()">Roll over to load more tweets</div>
+    </div>    
 
 </div>
 
