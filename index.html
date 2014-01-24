@@ -3,25 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-
-</head>
-<body>
-
-<div ng-app="app">
-
-<country>
-    <state>
-        <city>
-        </city>
-    </state>
-</country>
+    <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"> -->
+    <link rel="stylesheet" href="css/bootstrapyeti.css">
     
+    <link rel="stylesheet" href="css/main.css">
+    
+</head>
+<body ng-app="app">
+
+
+<div ng-controller="MyCtrl">
+    <div id="login">
+      <span ng-show="auth.user">
+        {{auth.user.name}} | <a href="#" ng-click="auth.$logout()">Logout</a>
+        <img ng-src="https://graph.facebook.com/{{auth.user.username}}/picture?type=large" alt="">
+      </span>
+      <a href="#" ng-hide="auth.user" ng-click="auth.$login('facebook')">Login</a>
+    </div>
 </div>
-</div>
+
+
 
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
-<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="bower_components/firebase/firebase.js"></script>
+<script type="text/javascript" src="bower_components/angularfire/angularfire.js"></script>
+<script type="text/javascript" src="bower_components/firebase-simple-login/firebase-simple-login.js"></script>
+<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/controllers.js"></script>
     
 </body>
 </html>
