@@ -7,12 +7,53 @@
     <link rel="stylesheet" href="css/bootstrapyeti.css">
     
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/narrow.css">
     
 </head>
 <body ng-app="app">
 
 
-<div ng-controller="MyCtrl">
+<div class="container">
+  <div class="header">
+    <ul class="nav nav-pills pull-right">
+      <li><a href="#">Login</a></li>
+    </ul>
+    <h3 class="text-muted">mopu.me</h3>
+  </div>
+
+  <div class="jumbotron">
+    <h1>Get movie pushed!</h1>
+    <p class="lead">Share your profile with people and let them recommend movies to you. They can be your friends or anonymous.</p>
+    <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up now</a></p>
+  </div>
+
+  <div class="row marketing">
+        <div class="col-lg-6">
+          <h4>Personalized</h4>
+          <p>Your friends know who you are and they know what movies you would like.</p>
+
+          <h4>Social</h4>
+          <p>Check which movies your friends watched. Interact with them by giving recommendations.</p>
+
+        
+        </div>
+        <div class="col-lg-6">
+          <h4>Fun</h4>
+          <p>Being anonymous is always fun. Have fun with your friends.</p>
+
+          <h4>History</h4>
+          <p>Keep a list of movies that you watched and you will watch later.</p>
+
+        </div>
+  </div>
+
+  <div class="footer">
+        <p>mopu.me | vionlabs movie hackathon | january 2014</p>
+  </div>
+</div>
+
+
+<!-- <div ng-controller="MyCtrl">
     <div id="login">
       <span ng-show="auth.user">
         {{auth.user.name}} | <a href="#" ng-click="auth.$logout()">Logout</a>
@@ -21,7 +62,7 @@
       <a href="#" ng-hide="auth.user" ng-click="auth.$login('facebook')">Login</a>
     </div>
 </div>
-
+ -->
 
 
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
@@ -29,7 +70,6 @@
 <script type="text/javascript" src="bower_components/angularfire/angularfire.js"></script>
 <script type="text/javascript" src="bower_components/firebase-simple-login/firebase-simple-login.js"></script>
 <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-
 
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/controllers.js"></script>
