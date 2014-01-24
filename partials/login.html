@@ -1,0 +1,9 @@
+<div ng-controller="LoginCtrl">
+    <div id="login">
+      <span ng-show="auth.user">
+        {{auth.user.name}} | <a href="#" ng-click="auth.$logout()">Logout</a>
+        <img ng-src="https://graph.facebook.com/{{auth.user.username}}/picture?type=large" alt="">
+      </span>
+      <a href="#" ng-hide="auth.user" ng-click="login()">Login</a>
+    </div>
+</div>
