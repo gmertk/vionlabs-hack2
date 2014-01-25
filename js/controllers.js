@@ -27,7 +27,9 @@ angular.module('myApp.controllers', [])
                 //console.log($routeParams.username);
                 // console.log($scope.auth.user);
                 if ($scope.auth.user) {
-                    var currentPageUsername = $location.path().split('/')[2];
+                    // var currentPageUsername = $location.path().split('/')[2];
+                    var currentPageUsername = window.location.hash.split('/')[2];
+
                     if ($scope.auth.user.username === currentPageUsername) {
                         $scope.movies = syncData("/users/" + $scope.auth.user.username + "/movies/");
                         $scope.otherProfile = false;
