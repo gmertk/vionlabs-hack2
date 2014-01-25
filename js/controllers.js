@@ -79,7 +79,14 @@ angular.module('myApp.controllers', [])
                 console.log(movie);
                 $firebase(moviesRef).$add(movie);
                 
-                $scope.alerts.push({msg: "What a push, thank you!", type:"success"});
+                var messages = [
+                    "Good job!",
+                    "Great movie!",
+                    "Cheers!",
+                    "Awesome, thanks!",
+                    "Booyah! Done! Coooooooool!"
+                ];
+                $scope.alerts.push({msg: messages[Math.floor(Math.random() * messages.length)], type:"success"});
                 $timeout(function () {
                     $scope.alerts.splice($scope.alerts.length-1, 1);
                 }, 1500);
