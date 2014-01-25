@@ -72,9 +72,18 @@ angular.module('myApp.controllers', [])
 
             var moviesRef = firebaseRef("/users/" + $scope.user.username + "/movies/");
             $scope.pushMovie = function (movie, comment) {
-                movie.from = "Someone";
-                movie.comment = comment;
+                if ($scope.auth.user) {
+                    movie.from = $scope.auth.user.username;
+                }
+                else {
+                    movie.from = "Someone";
+                }
                 
+                movie.comment = comment;
+                if(movie.title.length>44){
+                    movie.title = movie.title.substring(0,40);
+                    movie.title += "...";
+                }
                 $scope.pushedMovies.push(movie);
                 console.log(movie);
                 $firebase(moviesRef).$add(movie);
@@ -84,7 +93,9 @@ angular.module('myApp.controllers', [])
                     "Great movie!",
                     "Cheers!",
                     "Awesome, thanks!",
-                    "Booyah! Done! Coooooooool!"
+                    "Booyah!",
+                    "Done!",
+                    "Coooooooool!"
                 ];
                 $scope.alerts.push({msg: messages[Math.floor(Math.random() * messages.length)], type:"success"});
                 $timeout(function () {
