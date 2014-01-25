@@ -30,8 +30,8 @@
 
                     <div class="mupo-movie-info-buttons"> 
                         <div class="btn-group">
-                            <button class="btn btn-sm btn-default">Like</button>
-                            <button class="btn btn-sm btn-default">Dislike</button>
+                            <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-thumbs-up"></span>Like</button>
+                            <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-thumbs-down"></span>Dislike</button>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
 
 </div>
 
-<div ng-show-auth="logout">
+<div ng-show="otherProfile">
     <div class="row">
         <div class="jumbotron mupo-jumbotron" back-img="{{user.coverPicture}}">
             <img ng-src="{{user.picture}}" alt="" class="img-rounded">

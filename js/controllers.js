@@ -31,9 +31,13 @@ angular.module('myApp.controllers', [])
                     if ($scope.auth.user.username === currentPageUsername) {
                         $scope.movies = syncData("/users/" + $scope.auth.user.username + "/movies/");
                     }
+                    else {
+                        $scope.otherProfile = true;
+                    }
                 }
             });
 
+            $scope.otherProfile = true;
             $scope.alerts = [];
             $scope.pushedMovies = [];
             $scope.moviedb = moviedb;
