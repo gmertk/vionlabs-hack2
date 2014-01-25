@@ -1,4 +1,4 @@
-<div class="movies">
+<div class="movies" ng-show-auth="login">
     <div class="panel panel-info" ng-repeat="movie in movies">
         <div class="panel-heading">
         <h3 class="panel-title">{{movie.from}} pushed 
@@ -7,7 +7,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-3">
-                    <img class="mupo-movie-thumbnail" ng-src="{{movie.poster_url}}">
+                    <img class="mupo-movie-thumbnail" ng-src="{{movie.poster_url}}" class="img-rounded">
 
                 </div>
 
@@ -22,7 +22,9 @@
 
                         <p><strong>Plot:</strong> {{movie.plot}}</p>
                         <p><strong>IMDB Rating:</strong> {{movie.rating}}</p>
-                        <p><strong>Genres:</strong> {{movie.genres}}</p>
+                        <p><strong>Genres:</strong> {{movie.genres.join(", ")}}</p>
+                        <p><strong>Director:</strong>{{movie.movieDirector}}</p>
+                        <p><strong>Actors:</strong> {{movie.actors.join(', ')}}</p>
                     </div>
 
 
@@ -39,3 +41,73 @@
     </div>
 
 </div>
+
+<div ng-show-auth="logout">
+    <div class="row">
+        <div class="jumbotron mupo-jumbotron" back-img="{{user.coverPicture}}">
+            <img ng-src="{{user.picture}}" alt="" class="img-rounded">
+                <div class="caption">
+                    <h3>{{user.username}}</h3>
+                </div>
+        </div>
+    </div>
+    <div class="row mupo-movie-search-row">
+        <div class="input-group">
+            <span class="input-group-addon">Movie title:</span>
+            <input type="text" class="form-control" ng-model="query.title">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Search</button>
+            </span>
+        </div>
+
+        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)" class="mupo-alert">{{alert.msg}}</alert>
+
+
+        <ul class="movies" ng-show="query.title">
+            <div class="row mupo-movie-search-row" ng-repeat="movie in moviedb | filter:query | limitTo:5">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img class="mupo-movie-thumbnail" ng-src="{{movie.poster_url}}" class="img-rounded">
+                    </div>
+
+                    <div class="col-md-9">
+                        <div class="mupo-movie-info">
+                            <h3><a href="{{movie.url}}" target="_blank">{{movie.title}}</a></h3>
+                            <p><strong>Plot:</strong> {{movie.plot}}</p>
+                            <p><strong>IMDB Rating:</strong> {{movie.rating}}</p>
+                            <p><strong>Genres:</strong> {{movie.genres.join(', ')}}</p>
+                            <p><strong>Director:</strong>{{movie.movieDirector}}</p>
+                            <p><strong>Actors:</strong> {{movie.actors.join(', ')}}</p>
+                        </div>
+                    </div>
+                </div>   
+
+                <div class="row mupo-movie-search-comment-row">
+
+                    <div class="input-group">
+                        <span class="input-group-addon">Comment:</span>
+                        <input type="text" class="form-control" ng-model="comment" ng-disabled="isPushed(movie)">
+                        <span class="input-group-btn">
+                            <button ng-click="pushMovie(movie, comment); comment=''" class="btn btn-primary" ng-disabled="isPushed(movie)">
+                                Push it!
+                            </button>
+                        </span>
+                    </div>            
+                </div>            
+
+
+            </div>
+            
+
+        </ul>
+
+
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+</div>
+
