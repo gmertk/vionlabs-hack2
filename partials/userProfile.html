@@ -1,15 +1,40 @@
 <div class="movies">
-    <div class="panel panel-primary" ng-repeat="movie in movies">
+    <div class="panel panel-info" ng-repeat="movie in movies">
         <div class="panel-heading">
         <h3 class="panel-title">{{movie.from}} shared 
-            <a ng-href="{{movie.url}}" target="_blank">{{movie.title}}</a> with you,
-            saying that "{{movie.comment}}"</h3>
+            <a ng-href="{{movie.url}}" target="_blank">{{movie.title}}</a> with you.</h3>
         </div>
         <div class="panel-body">
-            <img class="mupo-movie-thumbnail" ng-src="{{movie.poster_url}}">
-            <p>Plot: {{movie.plot}}</p>
-            <p>IMDB Rating: {{movie.rating}}</p>
-            <p>Genres: {{movie.genres}}</p>
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="mupo-movie-thumbnail" ng-src="{{movie.poster_url}}">
+
+                </div>
+
+                <div class="col-md-9">
+                    <div class="mupo-movie-info">
+                        <blockquote>
+                            <p>
+                            {{movie.comment}}
+                            </p>
+                            <small>{{movie.from}}</small>
+                        </blockquote>
+
+                        <p><strong>Plot:</strong> {{movie.plot}}</p>
+                        <p><strong>IMDB Rating:</strong> {{movie.rating}}</p>
+                        <p><strong>Genres:</strong> {{movie.genres}}</p>
+                    </div>
+
+
+                    <div class="mupo-movie-info-buttons"> 
+                        <div class="btn-group">
+                            <button class="btn btn-sm btn-default">Like</button>
+                            <button class="btn btn-sm btn-default">Dislike</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
 
