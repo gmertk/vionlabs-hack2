@@ -15,12 +15,20 @@
 
 <div class="container">
   <div class="header">
-    <ul class="nav nav-pills pull-right">
     <div ng-controller="LoginCtrl">
+
+    <ul class="nav nav-pills pull-right">
       <li ng-show-auth="logout,error"><a ng-click="login()">Login</a></li>
+      <li ng-show-auth="login"> 
+        <img src="https://graph.facebook.com/{{auth.user.username}}/picture" alt="" class="mopu-profile-thumnail"> 
+      </li>
+      <li ng-show-auth="login">
+        <a>{{auth.user.displayName}}</a>
+        <li>
       <li ng-show-auth="login"><a ng-click="logout()">Log out</a></li>
-    </div>
     </ul>
+
+    </div>
     <h3 class="text-muted">mopu.me</h3>
   </div>
 

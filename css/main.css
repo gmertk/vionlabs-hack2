@@ -1,1 +1,7 @@
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+.mopu-profile-thumnail {
+    height: 41px;
+}
+.mupo-movie-thumbnail {
+    height: 317px;
+}

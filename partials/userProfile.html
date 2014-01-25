@@ -1,1 +1,16 @@
-User profile page
+<div class="movies">
+    <div class="panel panel-primary" ng-repeat="movie in movies">
+        <div class="panel-heading">
+        <h3 class="panel-title">{{movie.from}} shared 
+            <a ng-href="{{movie.url}}" target="_blank">{{movie.title}}</a> with you,
+            saying that "{{movie.comment}}"</h3>
+        </div>
+        <div class="panel-body">
+            <img class="mupo-movie-thumbnail" ng-src="{{movie.poster_url}}">
+            <p>Plot: {{movie.plot}}</p>
+            <p>IMDB Rating: {{movie.rating}}</p>
+            <p>Genres: {{movie.genres}}</p>
+        </div>
+    </div>
+
+</div>
