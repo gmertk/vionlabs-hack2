@@ -1,4 +1,8 @@
 <div class="movies" ng-show-auth="login">
+    <div class="input-group input-group-lg mupo-tagline" ng-show="!otherProfile">
+      <span class="input-group-addon">Tagline:</span>
+      <input type="text" class="form-control" placeholder="{{user.information.summary}}" ng-model="information">
+    </div>
     <div class="panel panel-info" ng-repeat="movie in movies">
         <div class="panel-heading">
         <h3 class="panel-title">{{movie.from}} pushed 
@@ -30,8 +34,8 @@
 
                     <div class="mupo-movie-info-buttons"> 
                         <div class="btn-group">
-                            <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-thumbs-up"></span>Like</button>
-                            <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-thumbs-down"></span>Dislike</button>
+                            <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Like</button>
+                            <button class="btn btn-sm btn-default"><span class="glyphicon glyphicon-thumbs-down"></span> Dislike</button>
                         </div>
                     </div>
                 </div>
@@ -48,6 +52,7 @@
             <img ng-src="{{user.picture}}" alt="" class="img-rounded">
                 <div class="caption">
                     <h3>{{user.username}}</h3>
+                    <p>{{user.information.$value}}</p>
                 </div>
         </div>
     </div>
@@ -89,11 +94,16 @@
                         <input type="text" class="form-control" ng-model="comment" ng-disabled="isPushed(movie)">
                         <span class="input-group-btn">
                             <button ng-click="pushMovie(movie, comment); comment=''" class="btn btn-primary" ng-disabled="isPushed(movie)">
-                                Push it!
+                                Just saying!
                             </button>
                         </span>
-                    </div>            
-                </div>            
+                    </div>           
+                </div>    
+                
+                <div class="row mupo-movie-search-comment-row">
+                    <button class="btn btn-default">Send it as a gift from iTunes</button>
+                    <button class="btn btn-warning">Send it as a gift from Amazon</button>
+                </div>
 
 
             </div>

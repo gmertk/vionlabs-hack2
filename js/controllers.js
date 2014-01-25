@@ -30,6 +30,8 @@ angular.module('myApp.controllers', [])
                     var currentPageUsername = $location.path().split('/')[2];
                     if ($scope.auth.user.username === currentPageUsername) {
                         $scope.movies = syncData("/users/" + $scope.auth.user.username + "/movies/");
+                        $scope.otherProfile = false;
+
                     }
                     else {
                         $scope.otherProfile = true;
@@ -38,6 +40,7 @@ angular.module('myApp.controllers', [])
             });
 
             $scope.otherProfile = true;
+
             $scope.alerts = [];
             $scope.pushedMovies = [];
             $scope.moviedb = moviedb;
@@ -48,6 +51,12 @@ angular.module('myApp.controllers', [])
             };
                 
             $scope.user.picture = "http://graph.facebook.com/"+ $scope.user.username +"/picture?type=large";
+            
+            var informationRef = firebaseRef("/users/" + $scope.user.username + "/information/");
+
+            $scope.user.information = $firebase(informationRef);
+            console.log($scope.user.information);
+            $scope.user.information.$bind($scope, 'information');
 
             var coverPictureUrl = "https://graph.facebook.com/"+ $scope.user.username + "?fields=cover";
 
