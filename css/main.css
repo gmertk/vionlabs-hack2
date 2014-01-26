@@ -70,7 +70,13 @@
     background-repeat: no-repeat;
     color: white;
 }
+.mupo-jumbotron-home h1{
+    text-shadow: 0.05em 0.1em 0.05em #333;
+}
 
+.mupo-jumbotron-home p{
+    text-shadow: 0.05em 0.1em 0.05em #333;
+}
 .mupo-tagline {
     margin-bottom: 20px;
 }
