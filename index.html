@@ -5,7 +5,8 @@
     <title>Document</title>
     <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"> -->
     <link rel="stylesheet" href="css/bootstrapflatly.css">
-    
+    <link href='http://fonts.googleapis.com/css?family=Fredoka+One|Nunito' rel='stylesheet' type='text/css'>
+
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/narrow.css">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
@@ -19,7 +20,6 @@
     <div ng-controller="LoginCtrl">
 
     <ul class="nav nav-pills pull-right">
-      <li ng-show-auth="logout,error"><a ng-click="login()">Login</a></li>
       <li ng-show-auth="login"> 
         <img src="https://graph.facebook.com/{{auth.user.username}}/picture" alt="" class="mopu-profile-thumnail"> 
       </li>
@@ -30,7 +30,7 @@
     </ul>
 
     </div>
-    <h3 class="text-muted">mopu.me</h3>
+    <h3 class="mupo-logo"><a href="/" class="text-primary">mupu.me</a></h3>
   </div>
 
   <div ng-view></div>
@@ -39,7 +39,7 @@
 
 
   <div class="footer">
-        <p>mopu.me | vionlabs movie hackathon | 2014 january</p>
+        <p>mupu.me | vionlabs movie hackathon | 2014 january</p>
   </div>
 </div>
 
@@ -59,6 +59,7 @@
 <script type="text/javascript" src="js/routes.js"></script>
 <script type="text/javascript" src="js/services.js"></script>
 <script type="text/javascript" src="js/directives.js"></script>
+<script type="text/javascript" src="js/filters.js"></script>
 
 <script src="js/service.login.js"></script>
 <script src="js/service.firebase.js"></script>

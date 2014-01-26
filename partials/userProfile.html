@@ -3,7 +3,7 @@
       <span class="input-group-addon">Tagline:</span>
       <input type="text" class="form-control" placeholder="{{user.information.summary}}" ng-model="information">
     </div>
-    <div class="panel panel-info" ng-repeat="movie in movies">
+    <div class="panel panel-info" ng-repeat="movie in movies | orderByPriority | reverse">
         <div class="panel-heading">
         <h3 class="panel-title">{{movie.from}} thought that you should watch
             <a ng-href="{{movie.url}}" target="_blank" class="label label-primary mupo-label-font">{{movie.title}}</a></h3>
@@ -59,10 +59,8 @@
     <div class="row mupo-movie-search-row">
         <div class="input-group">
             <span class="input-group-addon">Movie title:</span>
-            <input type="text" class="form-control" ng-model="query.title">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button">Search</button>
-            </span>
+            <input type="text" class="form-control" ng-model="query.title" placeholder="Search movies to send">
+            
         </div>
 
         <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)" class="mupo-alert">{{alert.msg}}</alert>
