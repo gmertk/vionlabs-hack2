@@ -48,9 +48,12 @@ angular.module('myApp.controllers', [])
             $scope.moviedb = moviedb;
 
             var url = $location.path();
+
             $scope.user = {
-                username: url.split('/')[2]
+                username: url.split('/')[2],
             };
+
+            $scope.currentUrl = $location.absUrl();
                 
             $scope.user.picture = "http://graph.facebook.com/"+ $scope.user.username +"/picture?type=large";
             

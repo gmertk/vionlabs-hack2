@@ -1,4 +1,9 @@
 <div class="movies" ng-show-auth="login">
+    <div class="alert alert-dismissable alert-success" ng-show="!otherProfile">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <p>Share your link: <strong>{{currentUrl}}</strong></p>
+    </div>
+
     <div class="input-group input-group-lg mupo-tagline" ng-show="!otherProfile">
       <span class="input-group-addon">Tagline:</span>
       <input type="text" class="form-control" placeholder="{{user.information.summary}}" ng-model="information">
