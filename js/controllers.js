@@ -30,10 +30,14 @@ angular.module('myApp.controllers', [])
                     
                     if ($scope.auth.user.username === currentPageUsername) { // I am on my profile
                         $scope.movies = syncData("/users/" + $scope.auth.user.username + "/movies/");
-                        $scope.extra = syncData("/users/" + $scope.auth.user.username + "/extra/");
                         $scope.currentUserUrl = $location.absUrl();
-
                         $scope.otherProfile = false;
+                        syncData('/users/' + $scope.auth.user.username + '/tagline').$bind($scope, 'tagline');
+
+                        $scope.keypressCallback = function($event) {
+                            console.log($event.target.blur());
+                            $event.preventDefault();
+                        };
                     }
                     else { // I am on someone else
                         $scope.otherProfile = true;
@@ -49,7 +53,6 @@ angular.module('myApp.controllers', [])
                     };
 
                     checkIfUserExists('/users/', $scope.userInView.username, function (userId, isExists) {
-                        console.log(isExists);
                         if (!isExists) {
                             $scope.$apply(function() { $location.path("/"); });
                         }
