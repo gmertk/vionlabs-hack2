@@ -22,7 +22,7 @@ angular.module('myApp.controllers', [])
   
     .controller('UserProfileCtrl', ['$rootScope', '$scope', 'loginService', '$location',
         'firebaseRef','$routeParams', 'waitForAuth', '$firebase', 'moviedb', '$timeout', 'syncData', '$http', 'checkIfUserExists',
-        function($rootScope, $scope, loginService, $location, firebaseRef, 
+        function($rootScope, $scope, loginService, $location, firebaseRef,
             $routeParams, waitForAuth, $firebase, moviedb, $timeout, syncData, $http, checkIfUserExists) {
             waitForAuth.then(function() {
                 if ($scope.auth.user) { // Logged in
@@ -30,6 +30,7 @@ angular.module('myApp.controllers', [])
                     
                     if ($scope.auth.user.username === currentPageUsername) { // I am on my profile
                         $scope.movies = syncData("/users/" + $scope.auth.user.username + "/movies/");
+                        $scope.extra = syncData("/users/" + $scope.auth.user.username + "/extra/");
                         $scope.currentUserUrl = $location.absUrl();
 
                         $scope.otherProfile = false;
@@ -59,11 +60,6 @@ angular.module('myApp.controllers', [])
     
                             $scope.userInView.picture = "http://graph.facebook.com/"+ $scope.userInView.username +"/picture?type=large";
                     
-                            var informationRef = firebaseRef("/users/" + $scope.userInView.username + "/information/");
-
-                            $scope.userInView.information = $firebase(informationRef);
-                            // console.log($scope.userInView.information);
-                            $scope.userInView.information.$bind($scope, 'information');
 
                             var coverPictureUrl = "https://graph.facebook.com/"+ $scope.userInView.username + "?fields=cover";
 

@@ -11,7 +11,7 @@ angular.module('myApp.config', [])
    .constant('loginRedirectPath', '/login')
 
    // your Firebase URL goes here
-   .constant('FBURL', 'https://mert-firebase.firebaseio.com');
+   .constant('FBURL', 'https://vivid-fire-7723.firebaseio.com');
 
    //you can use this one to try out a demo of the seed
 //   .constant('FBURL', 'https://angularfire-seed.firebaseio.com');

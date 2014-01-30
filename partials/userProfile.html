@@ -6,7 +6,7 @@
 
     <div class="input-group input-group-lg mupo-tagline" ng-show="!otherProfile">
       <span class="input-group-addon">Tagline:</span>
-      <input type="text" class="form-control" placeholder="{{auth.user.information.summary}}" ng-model="information">
+      <input type="text" class="form-control" placeholder="{{extra.tagline}}" ng-model="information">
     </div>
 
     <div class="panel panel-info" ng-repeat="movie in movies | orderByPriority | reverse">
