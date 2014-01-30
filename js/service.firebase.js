@@ -2,7 +2,7 @@
 angular.module('myApp.service.firebase', ['firebase'])
 
 // a simple utility to create references to Firebase paths
-   .factory('firebaseRef', ['Firebase', 'FBURL', function(Firebase, FBURL) {
+  .factory('firebaseRef', ['Firebase', 'FBURL', function(Firebase, FBURL) {
       /**
        * @function
        * @name firebaseRef
@@ -11,11 +11,11 @@ angular.module('myApp.service.firebase', ['firebase'])
        */
       return function(path) {
          return new Firebase(pathRef([FBURL].concat(Array.prototype.slice.call(arguments))));
-      }
-   }])
+      };
+  }])
 
    // a simple utility to create $firebase objects from angularFire
-   .service('syncData', ['$firebase', 'firebaseRef', function($firebase, firebaseRef) {
+  .service('syncData', ['$firebase', 'firebaseRef', function($firebase, firebaseRef) {
       /**
        * @function
        * @name syncData
@@ -27,8 +27,21 @@ angular.module('myApp.service.firebase', ['firebase'])
          var ref = firebaseRef(path);
          limit && (ref = ref.limit(limit));
          return $firebase(ref);
-      }
-   }]);
+      };
+  }])
+
+  .service('checkIfUserExists', ['firebaseRef', function (firebaseRef) {
+    return function (path, userId, callback) {
+      var usersRef = firebaseRef(path);
+      usersRef.child(userId).once('value', function(snapshot) {
+        var exists = (snapshot.val() !== null);
+        callback(userId, exists);
+      });
+    };
+
+  }]);
+
+
 
 function pathRef(args) {
    for(var i=0; i < args.length; i++) {

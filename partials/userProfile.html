@@ -1,13 +1,14 @@
 <div class="movies" ng-show-auth="login">
     <div class="alert alert-dismissable alert-success" ng-show="!otherProfile">
       <button type="button" class="close" data-dismiss="alert">×</button>
-      <p>Share your link: <strong>{{currentUrl}}</strong></p>
+      <p>Share your link: <strong>{{currentUserUrl}}</strong></p>
     </div>
 
     <div class="input-group input-group-lg mupo-tagline" ng-show="!otherProfile">
       <span class="input-group-addon">Tagline:</span>
-      <input type="text" class="form-control" placeholder="{{user.information.summary}}" ng-model="information">
+      <input type="text" class="form-control" placeholder="{{auth.user.information.summary}}" ng-model="information">
     </div>
+
     <div class="panel panel-info" ng-repeat="movie in movies | orderByPriority | reverse">
         <div class="panel-heading">
         <h3 class="panel-title">{{movie.from}} thought that you should watch
@@ -53,18 +54,18 @@
 
 <div ng-show="otherProfile">
     <div class="row">
-        <div class="jumbotron mupo-jumbotron" back-img="{{user.coverPicture}}">
-            <img ng-src="{{user.picture}}" alt="" class="img-rounded">
+        <div class="jumbotron mupo-jumbotron" back-img="{{userInView.coverPicture}}">
+            <img ng-src="{{userInView.picture}}" alt="" class="img-rounded">
                 <div class="caption">
-                    <h3>{{user.username}}</h3>
-                    <p>{{user.information.$value}}</p>
+                    <h3>{{userInView.username}}</h3>
+                    <p>{{userInView.information.$value}}</p>
                 </div>
         </div>
     </div>
     <div class="row mupo-movie-search-row">
         <div class="input-group">
             <span class="input-group-addon">Movie title:</span>
-            <input type="text" class="form-control" ng-model="query.title" placeholder="Find a movie for {{user.username}}">
+            <input type="text" class="form-control" ng-model="query.title" placeholder="Find a movie for {{userInView.username}}">
             
         </div>
 

@@ -19,14 +19,14 @@
   <div class="header">
     <div ng-controller="LoginCtrl">
 
-    <ul class="nav nav-pills pull-right">
-      <li ng-show-auth="login"> 
-        <img src="https://graph.facebook.com/{{auth.user.username}}/picture" alt="" class="mopu-profile-thumnail"> 
+    <ul class="nav nav-pills pull-right" ng-show-auth="login">
+      <li> 
+        <img ng-src="https://graph.facebook.com/{{auth.user.username}}/picture" alt="" class="mopu-profile-thumnail"> 
       </li>
-      <li ng-show-auth="login">
+      <li>
         <a ng-click="goToProfile()">{{auth.user.displayName}}</a>
         <li>
-      <li ng-show-auth="login"><a ng-click="logout()">Log out</a></li>
+      <li><a ng-click="logout()">Log out</a></li>
     </ul>
 
     </div>
