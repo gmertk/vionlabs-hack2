@@ -91,7 +91,9 @@ angular.module('myApp.controllers', [])
                                 }
                                 $scope.pushedMovies.push(movie);
                                 // console.log(movie);
-                                $firebase(moviesRef).$add(movie);
+                                
+                                var ref = new Firebase('https://vivid-fire-7723.firebaseio.com/users/'+$scope.userInView.username+"/movies");
+                                $firebase(ref).$add(movie);
                                 
                                 var messages = [
                                     "Good job!",
